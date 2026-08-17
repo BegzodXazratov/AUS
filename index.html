@@ -7,13 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-navy: #0A192F;
-            --primary-orange: #FF4D00;
-            --white: #FFFFFF;
-            --gray-light: #F5F5F5;
-            --gray-border: #E0E0E0;
-            --text-main: #333333;
-            --text-muted: #777777;
+            --bg-dark: #040914;
+            --card-bg: rgba(10, 22, 38, 0.85); /* Yarim shaffof to'q ko'k */
+            --primary-orange: #C94B32;
+            --orange-hover: #E0563B;
+            --text-main: #FFFFFF;
+            --text-muted: #8E9BAE;
+            --border-color: #1E2D4A;
+            --input-bg: #F4F1EA; /* Qaymoqrang oq */
+            --input-text: #0A1626;
+            --success-green: #4CAF50;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -25,7 +28,14 @@
         }
 
         body {
-            background-color: var(--white);
+            /* To'q ko'k fon va abstrakt/marmar tekstura */
+            background-color: var(--bg-dark);
+            background-image: url('https://images.unsplash.com/photo-1606169997198-4663738cb20d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            box-shadow: inset 0 0 0 2000px rgba(4, 9, 20, 0.75); /* Fonni biroz qoraytirish */
+            
             color: var(--text-main);
             display: flex;
             justify-content: center;
@@ -37,10 +47,13 @@
         .form-container {
             width: 100%;
             max-width: 600px;
-            background: var(--white);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px); /* Shishasimon effekt */
+            -webkit-backdrop-filter: blur(12px);
             padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(10, 25, 47, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
         }
@@ -54,6 +67,7 @@
             max-width: 180px;
             height: auto;
             margin-bottom: 20px;
+            filter: invert(1) brightness(2); /* Qora logotipni oq rangga o'tkazish */
         }
 
         .progress-container {
@@ -71,7 +85,7 @@
         .progress-bar {
             width: 100%;
             height: 4px;
-            background-color: var(--gray-light);
+            background-color: var(--border-color);
             border-radius: 4px;
             overflow: hidden;
         }
@@ -99,9 +113,9 @@
 
         h2 {
             font-size: 24px;
-            color: var(--primary-navy);
+            color: var(--text-main);
             margin-bottom: 24px;
-            font-weight: 600;
+            font-weight: 500;
             line-height: 1.4;
         }
 
@@ -117,17 +131,19 @@
             display: flex;
             align-items: center;
             padding: 18px 20px;
-            border: 2px solid var(--gray-border);
+            border: 1px solid var(--border-color);
+            background-color: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
             cursor: pointer;
             transition: var(--transition);
             font-size: 16px;
             font-weight: 500;
+            color: var(--text-main);
         }
 
         .option-label:hover {
-            border-color: var(--primary-navy);
-            background-color: rgba(10, 25, 47, 0.02);
+            border-color: var(--text-muted);
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .option-label input[type="radio"] {
@@ -137,7 +153,7 @@
         .custom-radio {
             width: 22px;
             height: 22px;
-            border: 2px solid var(--gray-border);
+            border: 2px solid var(--text-muted);
             border-radius: 50%;
             margin-right: 15px;
             display: flex;
@@ -150,29 +166,26 @@
             content: '';
             width: 10px;
             height: 10px;
-            background-color: var(--white);
+            background-color: var(--success-green);
             border-radius: 50%;
             opacity: 0;
             transition: var(--transition);
         }
 
+        /* Tanlangan holat (Selected State) */
         input[type="radio"]:checked + .custom-radio {
-            background-color: var(--primary-orange);
-            border-color: var(--primary-orange);
+            border-color: var(--success-green);
         }
 
         input[type="radio"]:checked + .custom-radio::after {
             opacity: 1;
         }
 
-        input[type="radio"]:checked ~ .option-text {
-            color: var(--primary-navy);
-            font-weight: 600;
-        }
-
         .option-label.selected {
-            border-color: var(--primary-orange);
-            background-color: rgba(255, 77, 0, 0.05);
+            background-color: var(--input-bg);
+            border-color: var(--input-bg);
+            color: var(--input-text);
+            font-weight: 600;
         }
 
         /* Text Inputs */
@@ -184,17 +197,23 @@
             width: 100%;
             padding: 20px;
             font-size: 18px;
-            border: 2px solid var(--gray-border);
+            background-color: var(--input-bg);
+            border: none;
             border-radius: 12px;
             outline: none;
             transition: var(--transition);
-            color: var(--primary-navy);
+            color: var(--input-text);
             font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         input[type="text"]:focus, input[type="tel"]:focus {
-            border-color: var(--primary-navy);
+            box-shadow: 0 0 0 3px rgba(201, 75, 50, 0.3);
+        }
+        
+        input::placeholder {
+            color: #999;
+            font-weight: 400;
         }
 
         /* Buttons */
@@ -205,11 +224,11 @@
         }
 
         .btn {
-            background-color: var(--primary-navy);
-            color: var(--white);
+            background-color: var(--primary-orange);
+            color: var(--text-main);
             border: none;
-            padding: 18px 40px;
-            font-size: 16px;
+            padding: 16px 36px;
+            font-size: 15px;
             font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
@@ -221,15 +240,15 @@
         }
 
         .btn:hover:not(:disabled) {
-            background-color: var(--primary-orange);
+            background-color: var(--orange-hover);
             transform: translateY(-2px);
         }
 
         .btn:disabled {
-            background-color: var(--gray-border);
+            background-color: rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
             cursor: not-allowed;
-            opacity: 0.7;
+            transform: none;
         }
 
         /* Messages */
@@ -239,7 +258,7 @@
         }
 
         .message-title {
-            color: var(--primary-navy);
+            color: var(--text-main);
             font-size: 28px;
             margin-bottom: 20px;
         }
@@ -257,11 +276,23 @@
             color: var(--primary-orange);
             margin-top: 20px;
         }
+        
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--success-green);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+        }
 
         /* Responsive */
         @media (max-width: 480px) {
             .form-container {
                 padding: 30px 20px;
+                border-radius: 12px;
             }
             h2 { font-size: 20px; }
             .btn { width: 100%; justify-content: center; }
@@ -279,7 +310,7 @@
 
         <!-- Progress Bar -->
         <div class="progress-container" id="progress-section">
-            <div class="progress-text">Bosqich: <span id="current-step-num">1</span>/4</div>
+            <div class="progress-text"><span id="current-step-num">1</span>/4</div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
@@ -326,9 +357,9 @@
 
         <!-- Step 3 -->
         <div class="step" id="step-3">
-            <h2>Ismingizni kiriting</h2>
+            <h2>Ismingiz</h2>
             <div class="input-group">
-                <input type="text" id="userName" placeholder="Masalan: Sardor" oninput="validateStep(3)">
+                <input type="text" id="userName" placeholder="Ismingizni kiriting" oninput="validateStep(3)">
             </div>
         </div>
 
@@ -336,7 +367,7 @@
         <div class="step" id="step-4">
             <h2>Siz bilan bog'lanishimiz uchun telefon raqamingizni qoldiring</h2>
             <div class="input-group">
-                <input type="tel" id="userPhone" placeholder="+998 (__) ___-__-__" value="+998 " oninput="formatPhone(event); validateStep(4)">
+                <input type="tel" id="userPhone" placeholder="+998" value="+998 " oninput="formatPhone(event); validateStep(4)">
             </div>
         </div>
 
@@ -348,12 +379,14 @@
 
         <!-- Success Message -->
         <div class="step message-box" id="step-success">
-            <h2 class="message-title">Rahmat! Arizangiz qabul qilindi.</h2>
-            <p class="message-desc">AUS ACADEMY mutaxassisi tez orada siz bilan bog'lanadi.</p>
-            <p class="message-desc">Savollar bo'lsa biz bilan bog'laning:</p>
+            <div class="success-icon">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h2 class="message-title">Rahmat!</h2>
+            <p class="message-desc">Arizangiz qabul qilindi.<br>AUS ACADEMY mutaxassisi tez orada siz bilan bog'lanadi.</p>
             <div class="contact-info">
-                +998 (99) 123-45-67<br>
-                +998 (90) 987-65-43
+                +998 (99) 999-99-99<br>
+                +998 (99) 999-99-99
             </div>
         </div>
 
@@ -361,7 +394,6 @@
         <div class="btn-container" id="btn-section">
             <button class="btn" id="nextBtn" onclick="nextStep()" disabled>
                 KEYINGISI 
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
         </div>
 
@@ -375,12 +407,10 @@
         // Styling for selected radio buttons
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', function() {
-                // Remove selected class from all siblings
                 const groupName = this.getAttribute('name');
                 document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
                     r.closest('.option-label').classList.remove('selected');
                 });
-                // Add selected class to chosen option
                 if(this.checked) {
                     this.closest('.option-label').classList.add('selected');
                 }
@@ -404,7 +434,6 @@
                 if (name.length >= 2) isValid = true;
             } else if (step === 4) {
                 const phone = document.getElementById('userPhone').value.replace(/\D/g, '');
-                // Needs exactly 12 digits (998 + 9 digits)
                 if (phone.length === 12) isValid = true;
             }
 
@@ -413,17 +442,13 @@
 
         function formatPhone(e) {
             let input = e.target;
-            // Faqat raqamlarni olib qolish
             let numbers = input.value.replace(/\D/g, '');
             
-            // +998 har doim turishi uchun
             if (!numbers.startsWith('998')) {
                 numbers = '998' + numbers;
             }
-            // Max length 12 ta raqam
             numbers = numbers.substring(0, 12);
             
-            // Formatlash: +998 (XX) XXX-XX-XX
             let formatted = '+998 ';
             if (numbers.length > 3) {
                 formatted += '(' + numbers.substring(3, 5);
@@ -442,10 +467,8 @@
         }
 
         function nextStep() {
-            // Hide current step
             document.getElementById(`step-${currentStep}`).classList.remove('active');
 
-            // Agar 1-bosqichda "Yo'q" tanlangan bo'lsa, rejection sahifasini ko'rsatish
             if (currentStep === 1 && isRejected) {
                 document.getElementById('step-reject').classList.add('active');
                 hideControls();
@@ -454,28 +477,19 @@
 
             currentStep++;
 
-            // Update Progress Bar
             if (currentStep <= totalSteps) {
                 document.getElementById('current-step-num').innerText = currentStep;
                 document.getElementById('progress-fill').style.width = `${(currentStep / totalSteps) * 100}%`;
                 
-                // Show next step
                 document.getElementById(`step-${currentStep}`).classList.add('active');
-                
-                // Disable button for next step initially
                 document.getElementById('nextBtn').disabled = true;
 
-                // Agar 4-bosqichga o'tilsa (oxirgi savol), tugma matnini o'zgartirish
                 if (currentStep === totalSteps) {
                     document.getElementById('nextBtn').innerHTML = 'RO\'YXATDAN O\'TISH';
-                    document.getElementById('nextBtn').style.backgroundColor = 'var(--primary-orange)';
                 }
             } else {
-                // Barcha bosqichlar tugadi - Muvaffaqiyatli yakun
                 document.getElementById('step-success').classList.add('active');
                 hideControls();
-                
-                // Bu yerda form ma'lumotlarini serverga yuborish logikasi bo'ladi (Webhook, Telegram bot, etc.)
                 console.log("Forma yuborildi!");
             }
         }
