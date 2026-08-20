@@ -3,306 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AUS ACADEMY - Ro'yxatdan o'tish</title>
+    <title>Bolalar uchun interyer dizayn kursi | AUS ACADEMY</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #040914;
-            --card-bg: rgba(10, 22, 38, 0.85);
+            --card-bg: rgba(10, 22, 38, 0.9);
             --primary-orange: #C94B32;
-            --orange-hover: #E0563B;
             --text-main: #FFFFFF;
             --text-muted: #8E9BAE;
-            --border-color: #1E2D4A;
-            --input-bg: #F4F1EA;
-            --input-text: #0A1626;
             --success-green: #4CAF50;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
 
         body {
             background-color: var(--bg-dark);
             background-image: url('https://images.unsplash.com/photo-1606169997198-4663738cb20d?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            background-size: cover; background-position: center;
             background-attachment: fixed;
             box-shadow: inset 0 0 0 2000px rgba(4, 9, 20, 0.75);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            font-family: 'Montserrat', sans-serif; padding: 20px;
         }
+
+        /* 3D Minimalist Icons */
+        .deco { position: absolute; font-size: 60px; opacity: 0.15; pointer-events: none; z-index: 0; }
 
         .form-container {
-            width: 100%; max-width: 600px;
-            background: var(--card-bg);
-            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            padding: 40px; border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            position: relative; overflow: hidden;
+            width: 100%; max-width: 500px; background: var(--card-bg);
+            backdrop-filter: blur(20px); padding: 40px; border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            text-align: center; position: relative; z-index: 1;
         }
 
-        .header { text-align: center; margin-bottom: 30px; }
-        .logo { max-width: 180px; height: auto; margin-bottom: 20px; filter: invert(1) brightness(2); }
-        .progress-container { margin-bottom: 30px; }
-        .progress-text { font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; text-align: right; }
-        .progress-bar { width: 100%; height: 4px; background-color: var(--border-color); border-radius: 4px; overflow: hidden; }
-        .progress-fill { height: 100%; background-color: var(--primary-orange); width: 25%; transition: var(--transition); }
-        .step { display: none; animation: fadeIn 0.5s forwards; }
-        .step.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        h2 { font-size: 24px; color: var(--text-main); margin-bottom: 24px; font-weight: 500; line-height: 1.4; }
-
-        .option-group { display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px; }
-        .option-label { display: flex; align-items: center; padding: 18px 20px; border: 1px solid var(--border-color); background-color: rgba(255, 255, 255, 0.02); border-radius: 12px; cursor: pointer; transition: var(--transition); font-size: 16px; font-weight: 500; color: var(--text-main); }
-        .option-label:hover { border-color: var(--text-muted); background-color: rgba(255, 255, 255, 0.05); }
-        .option-label input[type="radio"] { display: none; }
-        .custom-radio { width: 22px; height: 22px; border: 2px solid var(--text-muted); border-radius: 50%; margin-right: 15px; display: flex; justify-content: center; align-items: center; transition: var(--transition); }
-        .custom-radio::after { content: ''; width: 10px; height: 10px; background-color: var(--success-green); border-radius: 50%; opacity: 0; transition: var(--transition); }
+        /* Logotip */
+        .logo { width: 120px; margin-bottom: 15px; }
         
-        input[type="radio"]:checked + .custom-radio { border-color: var(--success-green); }
-        input[type="radio"]:checked + .custom-radio::after { opacity: 1; }
-        .option-label.selected { background-color: var(--input-bg); border-color: var(--input-bg); color: var(--input-text); font-weight: 600; }
+        h1 { font-size: 14px; letter-spacing: 2px; color: var(--primary-orange); text-transform: uppercase; margin-bottom: 10px; }
+        h2 { font-size: 26px; margin-bottom: 30px; line-height: 1.3; color: white; }
+        
+        /* Progress Bar */
+        .progress-bar { width: 100%; height: 4px; background: #1E2D4A; border-radius: 4px; margin-bottom: 30px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary-orange); width: 25%; transition: 0.3s; }
 
-        .input-group { margin-bottom: 30px; }
-        input[type="text"], input[type="tel"] { width: 100%; padding: 20px; font-size: 18px; background-color: var(--input-bg); border: none; border-radius: 12px; outline: none; transition: var(--transition); color: var(--input-text); font-family: 'Montserrat', sans-serif; font-weight: 600; }
-        input[type="text"]:focus, input[type="tel"]:focus { box-shadow: 0 0 0 3px rgba(201, 75, 50, 0.3); }
-        input::placeholder { color: #999; font-weight: 400; }
-
-        .btn-container { display: flex; justify-content: flex-end; margin-top: 20px; }
-        .btn { background-color: var(--primary-orange); color: var(--text-main); border: none; padding: 16px 36px; font-size: 15px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: var(--transition); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-        .btn:hover:not(:disabled) { background-color: var(--orange-hover); transform: translateY(-2px); }
-        .btn:disabled { background-color: rgba(255, 255, 255, 0.1); color: var(--text-muted); cursor: not-allowed; transform: none; }
-
-        .message-box { text-align: center; padding: 40px 20px; }
-        .message-title { color: var(--text-main); font-size: 28px; margin-bottom: 20px; }
-        .message-desc { font-size: 16px; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; }
-        .contact-info { font-size: 18px; font-weight: 600; color: var(--primary-orange); margin-top: 20px; }
-        .success-icon { width: 60px; height: 60px; background-color: var(--success-green); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px auto; }
-
-        @media (max-width: 480px) {
-            .form-container { padding: 30px 20px; border-radius: 12px; }
-            h2 { font-size: 20px; }
-            .btn { width: 100%; justify-content: center; }
-            .option-label { padding: 15px; }
-        }
+        .step { display: none; }
+        .step.active { display: block; }
+        
+        .option-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+        .option-label { padding: 16px; border: 1px solid #1E2D4A; border-radius: 12px; cursor: pointer; color: white; transition: 0.3s; }
+        .option-label:hover, .option-label.selected { border-color: var(--primary-orange); background: rgba(201, 75, 50, 0.1); }
+        
+        input { width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #1E2D4A; background: #0A1626; color: white; margin-bottom: 15px; font-size: 16px; }
+        button { width: 100%; padding: 18px; background: var(--primary-orange); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        button:hover:not(:disabled) { background: #E0563B; }
+        button:disabled { opacity: 0.5; }
     </style>
 </head>
 <body>
+    <div class="deco" style="top:10%; left:10%">🛋️</div>
+    <div class="deco" style="bottom:10%; right:10%">✏️</div>
 
     <div class="form-container">
-        <div class="header" id="header-section">
-            <img src="https://static.tildacdn.com/tild3938-3437-4839-b837-373263383231/image.png" alt="AUS ACADEMY" class="logo">
-        </div>
+        <!-- Logo -->
+        <img src="https://i.imgur.com/kZ4tYk2.png" class="logo" alt="AUS Logo">
+        <h1>AUS ACADEMY</h1>
+        <h2>Bolalar uchun interyer dizayn kursi</h2>
+        
+        <div class="progress-bar"><div class="progress-fill" id="pb"></div></div>
 
-        <div class="progress-container" id="progress-section">
-            <div class="progress-text"><span id="current-step-num">1</span>/4</div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-        </div>
-
-        <div class="step active" id="step-1">
-            <h2>Markazimiz Toshkent shahrida joylashgan. Qatnab o'qiy olasizmi?</h2>
+        <div id="step-1" class="step active">
             <div class="option-group">
-                <label class="option-label">
-                    <input type="radio" name="location" value="yes" onchange="validateStep(1)">
-                    <div class="custom-radio"></div>
-                    <span class="option-text">Ha, Toshkent shahridanman</span>
-                </label>
-                <label class="option-label">
-                    <input type="radio" name="location" value="no" onchange="validateStep(1)">
-                    <div class="custom-radio"></div>
-                    <span class="option-text">Yo'q, o'qiy olmayman</span>
-                </label>
+                <label class="option-label" onclick="select(this, 1)">Ha, Toshkentdanman<input type="radio" name="loc" value="yes" style="display:none"></label>
+                <label class="option-label" onclick="select(this, 1)">Yo'q, o'qiy olmayman<input type="radio" name="loc" value="no" style="display:none"></label>
             </div>
+            <button id="b1" onclick="next(2)" disabled>KEYINGISI</button>
         </div>
 
-        <div class="step" id="step-2">
-            <h2>Kursni kim uchun ko'rayapsiz?</h2>
-            <div class="option-group">
-                <label class="option-label">
-                    <input type="radio" name="target" value="self" onchange="validateStep(2)">
-                    <div class="custom-radio"></div>
-                    <span class="option-text">O'zim uchun</span>
-                </label>
-                <label class="option-label">
-                    <input type="radio" name="target" value="child" onchange="validateStep(2)">
-                    <div class="custom-radio"></div>
-                    <span class="option-text">Farzandim uchun</span>
-                </label>
-                <label class="option-label">
-                    <input type="radio" name="target" value="friend" onchange="validateStep(2)">
-                    <div class="custom-radio"></div>
-                    <span class="option-text">Tanishim uchun</span>
-                </label>
-            </div>
-        </div>
-
-        <div class="step" id="step-3">
-            <h2>Ismingiz</h2>
-            <div class="input-group">
-                <input type="text" id="userName" placeholder="Ismingizni kiriting" oninput="validateStep(3)">
-            </div>
-        </div>
-
-        <div class="step" id="step-4">
-            <h2>Siz bilan bog'lanishimiz uchun telefon raqamingizni qoldiring</h2>
-            <div class="input-group">
-                <input type="tel" id="userPhone" placeholder="+998" value="+998 " oninput="formatPhone(event); validateStep(4)">
-            </div>
-        </div>
-
-        <div class="step message-box" id="step-reject">
-            <h2 class="message-title">Kechirasiz</h2>
-            <p class="message-desc">Afsuski, hozircha darslarimiz faqat Toshkent shahrida oflayn tarzda olib boriladi. Kelajakda onlayn format qo'shilsa xabar beramiz!</p>
-        </div>
-
-        <div class="step message-box" id="step-success">
-            <div class="success-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <h2 class="message-title">Rahmat!</h2>
-            <p class="message-desc">Arizangiz qabul qilindi.<br>AUS ACADEMY mutaxassisi tez orada siz bilan bog'lanadi.</p>
-            <div class="contact-info">
-                +998 (99) 999-99-99<br>
-                +998 (99) 999-99-99
-            </div>
-        </div>
-
-        <div class="btn-container" id="btn-section">
-            <button class="btn" id="nextBtn" onclick="nextStep()" disabled>KEYINGISI</button>
+        <div id="step-2" class="step">
+            <input type="text" id="name" placeholder="Ismingiz">
+            <input type="tel" id="phone" value="+998 ">
+            <button onclick="submitLead()">RO'YXATDAN O'TISH</button>
         </div>
     </div>
 
     <script>
-        let currentStep = 1;
-        const totalSteps = 4;
-        let isRejected = false;
+        const entryTime = Date.now();
+        let current = 1;
 
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const groupName = this.getAttribute('name');
-                document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
-                    r.closest('.option-label').classList.remove('selected');
-                });
-                if(this.checked) {
-                    this.closest('.option-label').classList.add('selected');
-                }
+        function select(el, step) {
+            document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+            el.classList.add('selected');
+            document.getElementById('b' + step).disabled = false;
+        }
+
+        function next(step) {
+            document.getElementById('step-' + current).classList.remove('active');
+            current = step;
+            document.getElementById('step-' + current).classList.add('active');
+            document.getElementById('pb').style.width = '100%';
+        }
+
+        async function submitLead() {
+            const time = Math.floor((Date.now() - entryTime) / 1000);
+            const count = parseInt(localStorage.getItem('lc') || 0) + 1;
+            const text = `🎯 <b>LID №${count}</b>\n👤 <b>Ism:</b> ${document.getElementById('name').value}\n📞 <b>Tel:</b> ${document.getElementById('phone').value}\n⏱ <b>Vaqt:</b> ${time} soniya`;
+
+            await fetch('https://api.telegram.org/bot8712814801:AAGxdtWzC9beYpRsy1N47MsfBW7Y9DbigXs/sendMessage', {
+                method: 'POST', headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ chat_id: '-5318102071', text: text, parse_mode: 'HTML' })
             });
-        });
-
-        function validateStep(step) {
-            const nextBtn = document.getElementById('nextBtn');
-            let isValid = false;
-
-            if (step === 1) {
-                const location = document.querySelector('input[name="location"]:checked');
-                if (location) { isValid = true; isRejected = location.value === 'no'; }
-            } else if (step === 2) {
-                if (document.querySelector('input[name="target"]:checked')) isValid = true;
-            } else if (step === 3) {
-                const name = document.getElementById('userName').value.trim();
-                if (name.length >= 2) isValid = true;
-            } else if (step === 4) {
-                const phone = document.getElementById('userPhone').value.replace(/\D/g, '');
-                if (phone.length === 12) isValid = true;
-            }
-            nextBtn.disabled = !isValid;
-        }
-
-        function formatPhone(e) {
-            let input = e.target;
-            let numbers = input.value.replace(/\D/g, '');
-            if (!numbers.startsWith('998')) numbers = '998' + numbers;
-            numbers = numbers.substring(0, 12);
-            let formatted = '+998 ';
-            if (numbers.length > 3) formatted += '(' + numbers.substring(3, 5);
-            if (numbers.length >= 5) formatted += ') ' + numbers.substring(5, 8);
-            if (numbers.length >= 8) formatted += '-' + numbers.substring(8, 10);
-            if (numbers.length >= 10) formatted += '-' + numbers.substring(10, 12);
-            input.value = formatted;
-        }
-
-        function nextStep() {
-            if (currentStep === 1 && isRejected) {
-                document.getElementById(`step-${currentStep}`).classList.remove('active');
-                document.getElementById('step-reject').classList.add('active');
-                hideControls();
-                return;
-            }
-
-            if (currentStep === totalSteps) {
-                // Ma'lumotlarni Telegramga yuborish
-                sendToTelegram();
-            } else {
-                document.getElementById(`step-${currentStep}`).classList.remove('active');
-                currentStep++;
-                document.getElementById('current-step-num').innerText = currentStep;
-                document.getElementById('progress-fill').style.width = `${(currentStep / totalSteps) * 100}%`;
-                document.getElementById(`step-${currentStep}`).classList.add('active');
-                document.getElementById('nextBtn').disabled = true;
-
-                if (currentStep === totalSteps) {
-                    document.getElementById('nextBtn').innerHTML = 'RO\'YXATDAN O\'TISH';
-                }
-            }
-        }
-
-        function sendToTelegram() {
-            const nextBtn = document.getElementById('nextBtn');
-            nextBtn.innerHTML = 'YUBORILMOQDA...';
-            nextBtn.disabled = true;
-
-            const targetInput = document.querySelector('input[name="target"]:checked');
-            const target = targetInput ? targetInput.closest('.option-label').querySelector('.option-text').innerText : '';
-            const name = document.getElementById('userName').value.trim();
-            const phone = document.getElementById('userPhone').value;
-            const time = new Date().toLocaleString('uz-UZ');
-
-            const botToken = '8712814801:AAGxdtWzC9beYpRsy1N47MsfBW7Y9DbigXs';
-            const chatId = '-5318102071';
-
-            const text = `🔥 <b>YANGI LID - AUS ACADEMY</b>\n\n👤 <b>Ism:</b> ${name}\n📞 <b>Telefon:</b> ${phone}\n🎯 <b>Kim uchun:</b> ${target}\n🕒 <b>Vaqt:</b> ${time}`;
-            
-            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-            fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: text,
-                    parse_mode: 'HTML'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    document.getElementById(`step-${currentStep}`).classList.remove('active');
-                    document.getElementById('step-success').classList.add('active');
-                    hideControls();
-                } else {
-                    alert("Xatolik yuz berdi. Iltimos tekshirib qaytadan urinib ko'ring.");
-                    nextBtn.innerHTML = 'RO\'YXATDAN O\'TISH';
-                    nextBtn.disabled = false;
-                }
-            })
-            .catch(error => {
-                alert("Internetga ulanishda xatolik yuz berdi.");
-                nextBtn.innerHTML = 'RO\'YXATDAN O\'TISH';
-                nextBtn.disabled = false;
-            });
-        }
-
-        function hideControls() {
-            document.getElementById('progress-section').style.display = 'none';
-            document.getElementById('btn-section').style.display = 'none';
+            localStorage.setItem('lc', count);
+            alert("Rahmat!");
         }
     </script>
 </body>
