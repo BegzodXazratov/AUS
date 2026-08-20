@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bolalar uchun interyer dizayn kursi | AUS ACADEMY</title>
+    <title>AUS ACADEMY - Ro'yxatdan o'tish</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,17 +19,21 @@
         body { background-color: var(--bg-dark); min-height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif; padding: 20px; }
         .form-container { width: 100%; max-width: 500px; background: var(--card-bg); backdrop-filter: blur(20px); padding: 40px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.15); text-align: center; }
         
-        .logo-box { width: 100px; height: 100px; margin: 0 auto 20px; }
+        .logo-box { width: 80px; height: 80px; margin: 0 auto 15px; }
         .logo-box img { max-width: 100%; height: auto; border-radius: 12px; }
-        h1 { font-size: 14px; letter-spacing: 2px; color: var(--primary-orange); margin-bottom: 5px; font-weight: 700; }
-        h2 { font-size: 20px; margin-bottom: 30px; color: var(--text-main); font-weight: 600; }
+        
+        /* O'qituvchi va o'quvchi rasmi uchun */
+        .process-img { width: 100%; height: 200px; margin-bottom: 20px; border-radius: 16px; overflow: hidden; }
+        .process-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        h1 { font-size: 14px; letter-spacing: 2px; color: var(--primary-orange); margin-bottom: 20px; font-weight: 700; }
         
         .step { display: none; }
         .step.active { display: block; }
         
         .question-text { font-size: 18px; color: var(--text-main); margin-bottom: 25px; font-weight: 600; }
         .option-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
-        .option-label { padding: 16px; border: 1px solid #2A3F6D; border-radius: 12px; cursor: pointer; color: var(--text-main); background: rgba(255, 255, 255, 0.03); transition: 0.3s; text-align: left; }
+        .option-label { padding: 16px; border: 1px solid #2A3F6D; border-radius: 12px; cursor: pointer; color: var(--text-main); background: rgba(255, 255, 255, 0.03); transition: 0.3s; text-align: left; font-weight: 500; }
         .option-label:hover, .option-label.selected { border-color: var(--primary-orange); background: rgba(201, 75, 50, 0.25); }
         
         input { width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #2A3F6D; background: #0A1626; color: var(--text-main); margin-bottom: 15px; font-size: 16px; }
@@ -43,12 +47,17 @@
 <body>
 
     <div class="form-container">
-        <!-- Logo qismi -->
+        <!-- Logo -->
         <div class="logo-box">
             <img src="logo.jpg" alt="AUS Logo" onerror="this.src='https://i.imgur.com/kZ4tYk2.png'">
         </div>
+        
+        <!-- O'qituvchi va o'quvchi rasmi -->
+        <div class="process-img">
+            <img src="teacher-student.jpg" alt="Dars jarayoni" onerror="this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop'">
+        </div>
+
         <h1>AUS ACADEMY</h1>
-        <h2>Bolalar uchun interyer dizayn kursi</h2>
         
         <!-- 1-Step -->
         <div id="step-1" class="step active">
@@ -80,7 +89,7 @@
         <!-- 4-Step: Thank You -->
         <div id="step-4" class="thank-you">
             <h2 style="color:var(--success-green)">Rahmat!</h2>
-            <p style="margin-bottom:20px; color:var(--text-muted)">Arizangiz muvaffaqiyatli qabul qilindi.</p>
+            <p style="margin-bottom:20px; color:var(--text-muted)">Arizangiz qabul qilindi.</p>
             <a href="https://instagram.com" class="social-btn" style="background:var(--insta-color)">Instagramga qaytish</a>
             <a href="https://t.me/AUS_admin1" class="social-btn" style="background:var(--tg-color)">Telegram adminga yozish</a>
         </div>
@@ -109,14 +118,7 @@
             const dateStr = now.toLocaleDateString('uz-UZ');
             const timeStr = now.toLocaleTimeString('uz-UZ');
 
-            const text = `🎯 <b>LID №${count}</b>\n\n` +
-                         `👤 <b>Ism:</b> ${document.getElementById('name').value}\n` +
-                         `📞 <b>Tel:</b> ${document.getElementById('phone').value}\n` +
-                         `📍 <b>Toshkent:</b> ${formData.toshkent}\n` +
-                         `👶 <b>Kim uchun:</b> ${formData.kim}\n` +
-                         `📅 <b>Sana:</b> ${dateStr}\n` +
-                         `🕒 <b>Soat:</b> ${timeStr}\n` +
-                         `⏱ <b>Saytda bo'lgan vaqti:</b> ${time} soniya`;
+            const text = `🎯 <b>LID №${count}</b>\n\n👤 <b>Ism:</b> ${document.getElementById('name').value}\n📞 <b>Tel:</b> ${document.getElementById('phone').value}\n📍 <b>Toshkent:</b> ${formData.toshkent}\n👶 <b>Kim uchun:</b> ${formData.kim}\n📅 <b>Sana:</b> ${dateStr}\n🕒 <b>Soat:</b> ${timeStr}\n⏱ <b>Saytda bo'lgan vaqti:</b> ${time} soniya`;
 
             await fetch('https://api.telegram.org/bot8712814801:AAGxdtWzC9beYpRsy1N47MsfBW7Y9DbigXs/sendMessage', {
                 method: 'POST', headers: {'Content-Type': 'application/json'},
