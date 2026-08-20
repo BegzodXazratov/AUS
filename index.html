@@ -34,9 +34,9 @@
             text-align: center; position: relative; z-index: 1;
         }
 
-        /* GitHub-dagi rasm uchun joy */
+        /* GitHub-dagi .jpg rasm uchun joy */
         .logo-box { width: 100px; height: 100px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; }
-        .logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; }
         
         h1 { font-size: 14px; letter-spacing: 2px; color: var(--primary-orange); margin-bottom: 5px; }
         h2 { font-size: 22px; margin-bottom: 25px; color: white; }
@@ -65,9 +65,9 @@
     <div class="deco" style="bottom:10%; right:10%">✏️</div>
 
     <div class="form-container">
-        <!-- Logotip: logo.png o'rniga GitHub'ga yuklagan rasm nomini yozasiz -->
+        <!-- Logotip: logo.jpg (GitHub'ga yuklagan fayl nomingizga moslang) -->
         <div class="logo-box">
-            <img src="logo.png" alt="AUS Logo" onerror="this.src='https://i.imgur.com/kZ4tYk2.png'">
+            <img src="logo.jpg" alt="AUS Logo" onerror="this.src='https://i.imgur.com/kZ4tYk2.png'">
         </div>
         
         <h1>AUS ACADEMY</h1>
@@ -112,12 +112,10 @@
         let formData = { toshkent: '', kim: '' };
 
         function selectOpt(el, key, val) {
-            // Tanlangan guruhdagi boshqalardan classni olib tashlash
             el.parentElement.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
             el.classList.add('selected');
             formData[key] = val;
             
-            // Tugmani faollashtirish
             if(key === 'toshkent') document.getElementById('btn1').disabled = false;
             if(key === 'kim') document.getElementById('btn2').disabled = false;
         }
@@ -142,7 +140,7 @@
 
         function validateContact() {
             const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('userPhoneId') || document.getElementById('phone').value.replace(/\D/g, '');
+            const phone = document.getElementById('phone').value.replace(/\D/g, '');
             const btn = document.getElementById('submitBtn');
             
             if (name.length >= 2 && phone.length === 12) {
@@ -182,7 +180,6 @@
                 
                 localStorage.setItem('leadCounter', leadCount);
                 
-                // Thank you sahifasiga o'tish
                 document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
                 document.getElementById('step-thanks').classList.add('active');
 
