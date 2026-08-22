@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahmat! | AUS ACADEMY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #040914;
+            --card-bg: rgba(10, 22, 38, 0.95);
+            --success-green: #4CAF50;
+            --text-main: #FFFFFF;
+            --text-muted: #D0D8E8;
+            --tg-color: #0088cc;
+            --insta-color: #d62976;
+        }
+
+        body { background-color: var(--bg-dark); min-height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif; padding: 20px; }
+        .card { width: 100%; max-width: 500px; background: var(--card-bg); backdrop-filter: blur(20px); padding: 50px 40px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.15); text-align: center; }
+        
+        .logo-box { width: 80px; height: 80px; margin: 0 auto 20px; }
+        .logo-box img { max-width: 100%; height: auto; border-radius: 12px; }
+
+        h1 { font-size: 36px; color: var(--success-green); margin-bottom: 15px; font-weight: 700; }
+        p { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.5; }
+        
+        .social-btn { display: block; width: 100%; padding: 18px; margin-top: 12px; border-radius: 12px; color: white; text-decoration: none; font-weight: 600; font-size: 16px; transition: 0.3s; }
+        .social-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-insta { background: var(--insta-color); }
+        .btn-tg { background: var(--tg-color); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="logo-box">
+            <img src="logo.jpg" alt="AUS Logo" onerror="this.src='https://i.imgur.com/kZ4tYk2.png'">
+        </div>
+        
+        <h1>Rahmat!</h1>
+        <p>Arizangiz muvaffaqiyatli qabul qilindi. Mutaxassisimiz tez orada siz bilan bog'lanadi.</p>
+        
+        <a href="https://instagram.com" class="social-btn btn-insta" target="_blank">Instagramga qaytish</a>
+        <a href="https://t.me/AUS_admin1" class="social-btn btn-tg" target="_blank">Telegram adminga yozish</a>
+    </div>
+
+</body>
+</html>
