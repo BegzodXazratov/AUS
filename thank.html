@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rahmat! | AUS ACADEMY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Meta Pixel Code with Lead Event -->
     <script>
@@ -18,7 +18,7 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1984507065601523');
     fbq('track', 'PageView');
-    fbq('track', 'Lead'); /* <--- MAxSUS: Lid ro'yxatdan o'tganini bildiradi */
+    fbq('track', 'Lead');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1984507065601523&ev=PageView&noscript=1"
@@ -42,8 +42,18 @@
         .logo-box { width: 80px; height: 80px; margin: 0 auto 20px; }
         .logo-box img { max-width: 100%; height: auto; border-radius: 12px; }
 
-        h1 { font-size: 36px; color: var(--success-green); margin-bottom: 15px; font-weight: 700; }
-        p { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.5; }
+        /* Kayfiyat beradigan chiroyli katta yozuv */
+        .thank-title { 
+            font-size: 42px; 
+            font-weight: 800; 
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px; 
+            letter-spacing: 1px;
+        }
+        
+        p { font-size: 16px; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
         
         .social-btn { display: block; width: 100%; padding: 18px; margin-top: 12px; border-radius: 12px; color: white; text-decoration: none; font-weight: 600; font-size: 16px; transition: 0.3s; }
         .social-btn:hover { opacity: 0.9; transform: translateY(-2px); }
@@ -58,8 +68,8 @@
             <img src="logo.jpg" alt="AUS Logo" onerror="this.src='https://i.imgur.com/kZ4tYk2.png'">
         </div>
         
-        <h1>Rahmat!</h1>
-        <p>Arizangiz muvaffaqiyatli qabul qilindi. Mutaxassisimiz tez orada siz bilan bog'lanadi.</p>
+        <div class="thank-title">RAHMAT! ✨</div>
+        <p>Arizangiz muvaffaqiyatli qabul qilindi. Jamoamiz tez orada siz bilan bog'lanib, barcha tafsilotlarni ma'lum qiladi.</p>
         
         <a href="https://instagram.com" class="social-btn btn-insta" target="_blank">Instagramga qaytish</a>
         <a href="https://t.me/AUS_admin1" class="social-btn btn-tg" target="_blank">Telegram adminga yozish</a>
