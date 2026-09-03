@@ -62,7 +62,7 @@
         button:hover:not(:disabled) { background: #E0563B; }
         button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        .reject-box h3 { font-size: 20px; color: #ff6b6b; margin-bottom: 15px; line-height: 1.5; font-weight: 700; }
+        .reject-box h3 { font-size: 18px; color: #ff6b6b; margin-bottom: 15px; line-height: 1.5; font-weight: 700; }
         .social-btn { display: block; width: 100%; padding: 16px; margin-top: 20px; border-radius: 12px; color: white; text-decoration: none; font-weight: 600; background: var(--insta-color); transition: 0.3s; }
         .social-btn:hover { opacity: 0.9; }
     </style>
@@ -92,20 +92,27 @@
             <button onclick="checkFirstStep()" id="btn1" disabled>KEYINGISI</button>
         </div>
 
-        <!-- Rad etish sahifasi -->
+        <!-- Rad etish sahifasi (Toshkentdan bo'lmaganlar uchun) -->
         <div id="step-reject" class="step reject-box">
             <h3>Uzr, darslarimiz offline formatda va siz Toshkent shahrida bo'lmasangiz o'qiy olmaysiz.</h3>
             <a href="https://instagram.com" class="social-btn" target="_blank">Ortga (Instagram)</a>
         </div>
 
-        <!-- 2-Step -->
+        <!-- 2-Step (Yangilangan shartlar) -->
         <div id="step-2" class="step">
-            <div class="question-text">Kurs kim uchun?</div>
+            <div class="question-text">Kursimiz 14-20 yosh orasidagi bolalar uchun. Siz kim uchun izlayapsiz?</div>
             <div class="option-group">
-                <label class="option-label" onclick="sel(this, 'kim', 'O\'zim')">O'zim uchun</label>
-                <label class="option-label" onclick="sel(this, 'kim', 'Farzandim')">Farzandim uchun</label>
+                <label class="option-label" onclick="sel(this, 'kim', 'O\'zim (14-20 yosh)')">O'zim uchun (yoshim 14-20 orasida)</label>
+                <label class="option-label" onclick="sel(this, 'kim', 'Farzandim uchun')">Farzandim uchun</label>
+                <label class="option-label" onclick="sel(this, 'kim', 'O\'zim (20 yoshdan katta)')">O'zim uchun (20 yoshdan kattaman)</label>
             </div>
-            <button onclick="next(3)" id="btn2" disabled>KEYINGISI</button>
+            <button onclick="checkSecondStep()" id="btn2" disabled>KEYINGISI</button>
+        </div>
+
+        <!-- Yoshi mos kelmaganlar uchun rad etish sahifasi -->
+        <div id="step-reject-age" class="step reject-box">
+            <h3>Uzr, darslarimiz faqat 14-20 yosh orasidagi yoshlar uchun mo'ljallangan.</h3>
+            <a href="https://instagram.com" class="social-btn" target="_blank">Ortga (Instagram)</a>
         </div>
 
         <!-- 3-Step -->
@@ -134,6 +141,15 @@
                 document.getElementById('step-reject').classList.add('active');
             } else {
                 next(2);
+            }
+        }
+
+        function checkSecondStep() {
+            if (formData.kim === "O'zim (20 yoshdan katta)") {
+                document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+                document.getElementById('step-reject-age').classList.add('active');
+            } else {
+                next(3);
             }
         }
 
