@@ -266,8 +266,8 @@ $('form').addEventListener('submit',async e=>{
     if(SUBMIT_URL){
       await fetch(SUBMIT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),keepalive:true});
     } else { console.log('Ariza:',data); }
-    sessionStorage.setItem('aus_pending_lead',leadId);   // thanks.html shuni ko'rib, Lead'ni BIR marta sanaydi
-    location.href='thanks.html';
+    sessionStorage.setItem('aus_pending_lead',leadId);   // thank.html shuni ko'rib, Lead'ni BIR marta sanaydi
+    location.href='thank.html';
   }catch(err){
     sending=false; btn.disabled=false; btn.textContent="RO'YXATDAN O'TISH";
     alert("Yuborishda xatolik. Internetni tekshirib, qayta urinib ko'ring.");
