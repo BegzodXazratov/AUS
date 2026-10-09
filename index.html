@@ -59,14 +59,6 @@ body{
 .brand h1{font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;line-height:1.1}
 .brand p{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
 
-/* software logos */
-.tools{margin:0 8px 22px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04)}
-.tools small{display:block;font-size:12.5px;color:var(--muted);margin-bottom:10px}
-.tools ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.tool{width:52px;height:52px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;padding:7px;overflow:hidden}
-.tool img{max-width:100%;max-height:100%;object-fit:contain}
-.tool span{font-size:10px;font-weight:700;color:var(--navy);text-align:center;line-height:1.1}
-
 /* progress */
 .dim{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 8px 24px}
 .dim div{position:relative;padding-top:14px;font-size:12px;color:var(--muted);transition:color .3s}
@@ -140,11 +132,6 @@ body{
     </div>
   </div>
 
-  <div class="tools">
-    <small>Darslarda o'rganiladigan dasturlar</small>
-    <ul id="tools"></ul>
-  </div>
-
   <div class="dim" id="dim" aria-hidden="true">
     <div class="on">Format</div><div>Yosh</div><div>Ma'lumotlar</div>
   </div>
@@ -212,13 +199,6 @@ body{
 /* ====== SOZLAMALAR ====== */
 const INSTAGRAM_URL = "https://instagram.com";  // o'z Instagram havolangiz
 const SUBMIT_URL = "";                          // arizalar yuboriladigan manzil (CRM / Apps Script / bot)
-const TOOLS = [                                 // logotiplarni logos/ papkasiga shu nomlar bilan yuklang
-  {name:"AutoCAD",  file:"logos/autocad.png"},
-  {name:"SketchUp", file:"logos/sketchup.png"},
-  {name:"3ds Max",  file:"logos/3dsmax.png"},
-  {name:"Lumion",   file:"logos/lumion.png"},
-  {name:"V-Ray",    file:"logos/vray.png"}
-];
 /* ======================== */
 const PIXEL_ID = "";   // Meta Pixel ID ni shu yerga yozing
 function loadPixel(){
@@ -234,13 +214,6 @@ loadPixel();   // faqat PageView; Lead bu sahifada HECH QACHON yuborilmaydi
 
 const $ = id => document.getElementById(id);
 document.querySelectorAll('[data-ig]').forEach(a => a.href = INSTAGRAM_URL);
-
-TOOLS.forEach(t=>{
-  const li=document.createElement('li'); li.className='tool'; li.title=t.name;
-  const img=new Image(); img.alt=t.name; img.src=t.file;
-  img.onerror=()=>{ li.innerHTML=''; const s=document.createElement('span'); s.textContent=t.name; li.appendChild(s); };
-  li.appendChild(img); $('tools').appendChild(li);
-});
 
 const steps=['s1','s2','s3'];
 const dimItems=[...document.querySelectorAll('#dim div')];
