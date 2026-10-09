@@ -24,7 +24,7 @@ src="https://www.facebook.com/tr?id=1984507065601523&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
-<title>AUS ACADEMY - Ro'yxatdan o'tish</title>
+<title>AUS ACADEMY - Rahmat!</title>
 <style>
 :root{
   --navy:#072B4F;
@@ -63,61 +63,11 @@ body{
   box-shadow:0 30px 80px rgba(0,0,0,.55);}
 .pad{padding:0 8px}
 
-.photo{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid var(--line)}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo.empty{border:2px dashed rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:13px;padding:16px}
-.photo.empty img{display:none}
-.photo.empty::after{content:'O\'quvchilar bilan surat joyi (photo.webp)'}
-
-.brand{display:flex;align-items:flex-end;gap:14px;margin:-30px 8px 18px;position:relative}
+.brand{display:flex;align-items:flex-end;gap:14px;margin:8px 8px 18px;position:relative}
 .logo{width:72px;height:79px;flex:none;border-radius:14px;background:#fff;padding:4px;object-fit:contain;
   border:3px solid var(--navy-deep);box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .brand h1{font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;line-height:1.1}
 .brand p{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
-
-.dim{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 8px 24px}
-.dim div{position:relative;padding-top:14px;font-size:12px;color:var(--muted);transition:color .3s}
-.dim div::before{content:'';position:absolute;left:0;right:0;top:4px;height:2px;background:var(--line);transition:background .4s}
-.dim div::after{content:'';position:absolute;left:0;top:0;width:2px;height:10px;background:var(--line);transition:background .4s}
-.dim div.on{color:var(--ink)}
-.dim div.on::before,.dim div.on::after,.dim div.done::before,.dim div.done::after{background:var(--orange)}
-
-.step{display:none;padding:0 8px}
-.step.active{display:block;animation:in .35s ease both}
-@keyframes in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
-.q{font-family:'Unbounded',sans-serif;font-weight:500;font-size:18px;line-height:1.35;margin-bottom:18px}
-
-.choices{display:grid;gap:10px}
-.choice{position:relative;display:block;cursor:pointer}
-.choice input{position:absolute;opacity:0;inset:0;cursor:pointer}
-.choice span{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:14px;
-  border:1px solid var(--line);background:rgba(255,255,255,.05);font-size:15px;font-weight:500;line-height:1.3;
-  transition:border-color .2s,background .2s}
-.choice span::before{content:'';flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);transition:all .2s}
-.choice:hover span{border-color:rgba(239,74,39,.6)}
-.choice input:checked + span{border-color:var(--orange);background:rgba(239,74,39,.14)}
-.choice input:checked + span::before{border-color:var(--orange);background:var(--orange);box-shadow:inset 0 0 0 3px var(--navy-deep)}
-.choice input:focus-visible + span{outline:2px solid #fff;outline-offset:2px}
-
-.field{margin-bottom:16px}
-.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}
-.field input,.field textarea{width:100%;padding:14px 15px;border-radius:12px;border:1px solid var(--line);
-  background:rgba(255,255,255,.06);color:var(--ink);font:inherit;font-size:15px;outline:none;transition:border-color .2s,background .2s}
-.field textarea{min-height:92px;resize:vertical}
-.field input:focus,.field textarea:focus{border-color:var(--orange);background:rgba(255,255,255,.1)}
-.field.err input{border-color:var(--danger)}
-.field .msg{display:none;color:var(--danger);font-size:12px;margin-top:6px}
-.field.err .msg{display:block}
-
-.actions{display:flex;gap:10px;margin-top:22px}
-.btn{font:inherit;font-weight:600;font-size:15px;cursor:pointer;padding:15px 22px;border-radius:12px;border:1px solid transparent;
-  text-decoration:none;display:inline-flex;align-items:center;justify-content:center;text-align:center;transition:transform .15s,background .2s,opacity .2s}
-.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.btn-main{flex:1;background:var(--orange-btn);color:#fff}
-.btn-main:hover{background:var(--orange);transform:translateY(-1px)}
-.btn-main:disabled{opacity:.4;cursor:not-allowed;transform:none;background:var(--orange-btn)}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn-ghost:hover{background:rgba(255,255,255,.08)}
 
 .stop{display:none;padding:0 8px;animation:in .35s ease both}
 .stop.active{display:block}
@@ -128,7 +78,13 @@ body{
 .ok-mark svg{width:30px;height:30px;stroke-dasharray:30;stroke-dashoffset:30;animation:draw .6s .15s ease forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 
-@media (max-width:480px){.card{padding:14px 12px 22px;border-radius:18px}.q,.stop h2{font-size:16.5px}}
+.actions{display:flex;gap:10px;margin-top:22px}
+.btn{font:inherit;font-weight:600;font-size:15px;cursor:pointer;padding:15px 22px;border-radius:12px;border:1px solid transparent;
+  text-decoration:none;display:inline-flex;align-items:center;justify-content:center;text-align:center;transition:transform .15s,background .2s,opacity .2s}
+.btn-main{flex:1;background:var(--orange-btn);color:#fff}
+.btn-main:hover{background:var(--orange);transform:translateY(-1px)}
+
+@media (max-width:480px){.card{padding:14px 12px 22px;border-radius:18px}.stop h2{font-size:16.5px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.ok-mark svg{stroke-dashoffset:0}}
 </style>
 </head>
@@ -137,8 +93,6 @@ body{
 <div class="grid"></div>
 
 <main class="card" id="card">
-  <div class="photo" id="photo"><img src="photo.webp" alt="AUS Academy o'quvchilari" onerror="document.getElementById('photo').classList.add('empty')"></div>
-
   <div class="brand">
     <img class="logo" alt="AUS Academy logotipi" src="logo.jpg">
     <div>
@@ -147,72 +101,19 @@ body{
     </div>
   </div>
 
-  <div class="dim" id="dim" aria-hidden="true">
-    <div class="on">Format</div><div>Yosh</div><div>Ma'lumotlar</div>
-  </div>
-
-  <section class="step active" id="s1" aria-labelledby="q1">
-    <h2 class="q" id="q1">Kursimiz Toshkent shahrida offline formatda bo'ladi, qatnab o'qiy olasizmi?</h2>
-    <div class="choices">
-      <label class="choice"><input type="radio" name="offline" value="yes"><span>Ha, qatnab o'qiy olaman</span></label>
-      <label class="choice"><input type="radio" name="offline" value="no"><span>Yo'q, o'qiy olmayman</span></label>
-    </div>
-    <div class="actions"><button class="btn btn-main" id="n1" disabled>Keyingisi</button></div>
-  </section>
-
-  <section class="step" id="s2" aria-labelledby="q2">
-    <h2 class="q" id="q2">Kursimiz 14-20 yosh orasidagi bolalar uchun. Siz kim uchun izlayapsiz?</h2>
-    <div class="choices">
-      <label class="choice"><input type="radio" name="who" value="self"><span>O'zim uchun (yoshim 14-20 orasida)</span></label>
-      <label class="choice"><input type="radio" name="who" value="child"><span>Farzandim uchun</span></label>
-      <label class="choice"><input type="radio" name="who" value="adult"><span>O'zim uchun (20 yoshdan kattaman)</span></label>
-    </div>
-    <div class="actions">
-      <button class="btn btn-ghost" id="b2">Ortga</button>
-      <button class="btn btn-main" id="n2" disabled>Keyingisi</button>
-    </div>
-  </section>
-
-  <section class="step" id="s3" aria-labelledby="q3">
-    <h2 class="q" id="q3">Ma'lumotlaringizni qoldiring, siz bilan bog'lanamiz</h2>
-    <form id="form" novalidate>
-      <div class="field" id="f-name">
-        <label for="name">Ism va familiya</label>
-        <input id="name" type="text" autocomplete="name" placeholder="Anvar Aliyev">
-        <div class="msg">Ism va familiyani kiriting</div>
-      </div>
-      <div class="field" id="f-phone">
-        <label for="phone">Telefon raqam</label>
-        <input id="phone" type="tel" inputmode="tel" autocomplete="tel" value="+998 " placeholder="+998 90 123 45 67">
-        <div class="msg">Telefon raqamni to'liq kiriting</div>
-      </div>
-      <div class="field">
-        <label for="note">Savolingiz bo'lsa yozib qoldiring (ixtiyoriy)</label>
-        <textarea id="note" placeholder="Savolingiz..."></textarea>
-      </div>
-      <div class="actions">
-        <button type="button" class="btn btn-ghost" id="b3">Ortga</button>
-        <button type="submit" class="btn btn-main" id="send">RO'YXATDAN O'TISH</button>
-      </div>
-    </form>
-  </section>
-
-  <section class="stop" id="stop-city" role="alert">
-    <h2>Uzr, darslarimiz offline formatda va siz Toshkent shahrida bo'lmasangiz o'qiy olmaysiz.</h2>
-    <p>Yangiliklarimizni Instagram sahifamizda kuzatib borishingiz mumkin.</p>
-    <div class="actions"><a class="btn btn-main" href="#" data-ig>Instagram sahifamiz</a></div>
-  </section>
-  <section class="stop" id="stop-age" role="alert">
-    <h2>Uzr, darslarimiz faqat 14-20 yosh orasidagi yoshlar uchun mo'ljallangan.</h2>
-    <p>Yangiliklarimizni Instagram sahifamizda kuzatib borishingiz mumkin.</p>
+  <section class="stop active" style="padding:8px 8px 4px">
+    <div class="ok-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2>Rahmat! Arizangiz qabul qilindi.</h2>
+    <p>Menejerimiz tez orada qoldirgan raqamingiz orqali siz bilan bog'lanadi. Telefoningiz yoningizda bo'lsin.</p>
     <div class="actions"><a class="btn btn-main" href="#" data-ig>Instagram sahifamiz</a></div>
   </section>
 </main>
 
 <script>
-const INSTAGRAM_URL = "https://www.instagram.com/aus_academy_/"; 
-const SUBMIT_URL = "";                      
+const INSTAGRAM_URL = "https://www.instagram.com/aus_academy_/";  
 const PIXEL_ID = "1984507065601523";   
+const BOT_TOKEN = "8712814801:AAGxdtWzC9beYpRsy1N47MsfBW7Y9DbigXs";
+const CHAT_ID = "-5318102071";
 
 function loadPixel(){
   if(!PIXEL_ID) return false;
@@ -223,71 +124,29 @@ function loadPixel(){
   return true;
 }
 
-loadPixel();   
+document.querySelectorAll('[data-ig]').forEach(a=>a.href=INSTAGRAM_URL);
 
-const $ = id => document.getElementById(id);
-document.querySelectorAll('[data-ig]').forEach(a => a.href = INSTAGRAM_URL);
+(function(){
+  const id=sessionStorage.getItem('aus_pending_lead');
+  if(!id){ loadPixel(); return; }         
+  sessionStorage.removeItem('aus_pending_lead');
+  if(loadPixel() && window.fbq){ fbq('track','Lead',{},{eventID:id}); }
 
-const steps=['s1','s2','s3'];
-const dimItems=[...document.querySelectorAll('#dim div')];
-function show(id){
-  document.querySelectorAll('.step,.stop').forEach(e=>e.classList.remove('active'));
-  $(id).classList.add('active');
-  const i=steps.indexOf(id);
-  if(i>=0) dimItems.forEach((d,k)=>{ d.className = k<i ? 'done' : k===i ? 'on' : ''; });
-}
-const val = n => (document.querySelector(`input[name="${n}"]:checked`)||{}).value;
-
-document.querySelectorAll('input[name="offline"]').forEach(r=>r.addEventListener('change',()=>$('n1').disabled=false));
-document.querySelectorAll('input[name="who"]').forEach(r=>r.addEventListener('change',()=>$('n2').disabled=false));
-
-$('n1').onclick=()=> val('offline')==='yes' ? show('s2') : show('stop-city');
-$('b2').onclick=()=> show('s1');$('n2').onclick=()=> val('who')==='adult' ? show('stop-age') : show('s3');
-$('b3').onclick=()=> show('s2');
-
-const phone=$('phone');
-phone.addEventListener('input',()=>{
-  let d=phone.value.replace(/\D/g,'');
-  if(!d.startsWith('998')) d='998'+d.replace(/^998?/,'');
-  d=d.slice(0,12);
-  const p=[d.slice(0,3),d.slice(3,5),d.slice(5,8),d.slice(8,10),d.slice(10,12)].filter(Boolean);
-  phone.value='+'+p.join(' ')+(p.length<5?' ':'');
-});
-const setErr=(id,bad)=>{ $(id).classList.toggle('err',bad); return !bad; };
-
-let sending=false;   
-$('form').addEventListener('submit',async e=>{
-  e.preventDefault();
-  if(sending) return;
-  const okName=setErr('f-name',$('name').value.trim().length<3);
-  const okPhone=setErr('f-phone',phone.value.replace(/\D/g,'').length!==12);
-  if(!(okName&&okPhone)) return;
-
-  sending=true;
-  const btn=$('send'); btn.disabled=true; btn.textContent='Yuborilmoqda...';
-  const leadId='L'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
-  const data={
-    lead_id:leadId,
-    for: val('who')==='child' ? 'farzand' : "o'zi",
-    name:$('name').value.trim(),
-    phone:phone.value.trim(),
-    note:$('note').value.trim(),
-    date:new Date().toLocaleString()
-  };
-  try{
-    if(SUBMIT_URL){
-      await fetch(SUBMIT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),keepalive:true});
-    } else { console.log('Ariza:',data); }
+  const leadData = JSON.parse(sessionStorage.getItem('aus_lead_data') || '{}');
+  if(leadData.phone) {
+    sessionStorage.removeItem('aus_lead_data'); 
     
-    sessionStorage.setItem('aus_pending_lead', leadId);
-    sessionStorage.setItem('aus_lead_data', JSON.stringify(data));
+    const message = `🎯 Yangi Ariza (AUS Academy)!\n\n` +
+                    `👤 Ism: ${leadData.name || 'Kiritilmagan'}\n` +
+                    `📞 Tel: ${leadData.phone || 'Kiritilmagan'}\n` +
+                    `📌 Kim uchun: ${leadData.for || 'Noma\'lum'}\n` +
+                    `💬 Izoh: ${leadData.note || 'Yo\'q'}\n` +
+                    `🕒 Sana: ${new Date().toLocaleString()}`;
 
-    location.href='thank.html';
-  }catch(err){
-    sending=false; btn.disabled=false; btn.textContent="RO'YXATDAN O'TISH";
-    alert("Yuborishda xatolik. Internetni tekshirib, qayta urinib ko'ring.");
+    const img = new Image();
+    img.src = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=` + encodeURIComponent(message);
   }
-});
+})();
 </script>
 
 </body>
