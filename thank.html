@@ -123,27 +123,21 @@ document.querySelectorAll('[data-ig]').forEach(a=>a.href=INSTAGRAM_URL);
   sessionStorage.removeItem('aus_pending_lead');
   if(loadPixel() && window.fbq){ fbq('track','Lead',{},{eventID:id}); }
 
-  // Telegramga yuborish
+  // Telegramga xabar yuborish (Image usuli orqali - CORS xatolarini chetlab o'tish uchun 100% ishlaydi)
   const leadData = JSON.parse(sessionStorage.getItem('aus_lead_data') || '{}');
   if(leadData.phone) {
-    sessionStorage.removeItem('aus_lead_data'); // Ikki marta yuborilmasligi uchun tozalaymiz
+    sessionStorage.removeItem('aus_lead_data'); 
     
-    const message = `🎯 **Yangi Ariza (AUS Academy)!**\n\n` +
-                  `👤 **Ism:** ${leadData.name || 'Kiritilmagan'}\n` +
-                  `📞 **Tel:** ${leadData.phone || 'Kiritilmagan'}\n` +
-                  `📌 **Kim uchun:** ${leadData.for || 'Noma\'lum'}\n` +
-                  `💬 **Izoh:** ${leadData.note || 'Yo\'q'}\n` +
-                  `🕒 **Sana:** ${new Date().toLocaleString()}`;
+    const message = `🎯 Yangi Ariza (AUS Academy)!\n\n` +
+                    `👤 Ism: ${leadData.name || 'Kiritilmagan'}\n` +
+                    `📞 Tel: ${leadData.phone || 'Kiritilmagan'}\n` +
+                    `📌 Kim uchun: ${leadData.for || 'Noma\'lum'}\n` +
+                    `💬 Izoh: ${leadData.note || 'Yo\'q'}\n` +
+                    `🕒 Sana: ${new Date().toLocaleString()}`;
 
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: message,
-        parse_mode: 'Markdown'
-      })
-    }).catch(err => console.log('Telegram xatolik:', err));
+    // Brauzer blokirovkasini aylanib o'tish uchun maxfiy usul
+    const img = new Image();
+    img.src = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=` + encodeURIComponent(message);
   }
 })();
 </script>
