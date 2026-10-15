@@ -101,10 +101,9 @@ body{
 
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}
-.field input,.field textarea{width:100%;padding:14px 15px;border-radius:12px;border:1px solid var(--line);
+.field input{width:100%;padding:14px 15px;border-radius:12px;border:1px solid var(--line);
   background:rgba(255,255,255,.06);color:var(--ink);font:inherit;font-size:15px;outline:none;transition:border-color .2s,background .2s}
-.field textarea{min-height:92px;resize:vertical}
-.field input:focus,.field textarea:focus{border-color:var(--orange);background:rgba(255,255,255,.1)}
+.field input:focus{border-color:var(--orange);background:rgba(255,255,255,.1)}
 .field.err input{border-color:var(--danger)}
 .field .msg{display:none;color:var(--danger);font-size:12px;margin-top:6px}
 .field.err .msg{display:block}
@@ -185,10 +184,6 @@ body{
         <label for="phone">Telefon raqam</label>
         <input id="phone" type="tel" inputmode="tel" autocomplete="tel" value="+998 " placeholder="+998 90 123 45 67">
         <div class="msg">Telefon raqamni to'liq kiriting</div>
-      </div>
-      <div class="field">
-        <label for="note">Savolingiz bo'lsa yozib qoldiring (ixtiyoriy)</label>
-        <textarea id="note" placeholder="Savolingiz..."></textarea>
       </div>
       <div class="actions">
         <button type="button" class="btn btn-ghost" id="b3">Ortga</button>
@@ -271,7 +266,6 @@ $('form').addEventListener('submit',async e=>{
     for: val('who')==='child' ? 'farzand' : "o'zi",
     name:$('name').value.trim(),
     phone:phone.value.trim(),
-    note:$('note').value.trim(),
     date:new Date().toLocaleString()
   };
   try{
