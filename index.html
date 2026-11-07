@@ -206,7 +206,7 @@ body{
 
 <script>
 const INSTAGRAM_URL = "https://www.instagram.com/aus_academy_/"; 
-const SUBMIT_URL = "";                      
+const SUBMIT_URL = "https://geron-wheat.vercel.app/api/hook/9d7915e8408b4b95b790866b50de47c0";   // Geron CRM                      
 const PIXEL_ID = "1984507065601523";   
 
 function loadPixel(){
@@ -270,7 +270,15 @@ $('form').addEventListener('submit',async e=>{
   };
   try{
     if(SUBMIT_URL){
-      await fetch(SUBMIT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),keepalive:true});
+      // Geron CRM'ga yuborish. Xato bo'lsa ham foydalanuvchi to'xtatilmaydi (Telegram xabari thank.html'da ketadi)
+      try{
+        const q=new URLSearchParams(location.search), ck=n=>(document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'))||[])[1]||'';
+        const fbclid=q.get('fbclid')||'';
+        const body={name:data.name,phone:data.phone,message:'Kim uchun: '+data.for,lead_id:leadId,fbp:ck('_fbp'),fbc:ck('_fbc')||(fbclid?'fb.1.'+Date.now()+'.'+fbclid:''),fbclid,source_url:location.href};
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{ if(q.get(k)) body[k]=q.get(k); });
+        const ctl=new AbortController(); setTimeout(()=>ctl.abort(),4000);
+        await fetch(SUBMIT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),keepalive:true,signal:ctl.signal});
+      }catch(_){}
     } else { console.log('Ariza:',data); }
     
     sessionStorage.setItem('aus_pending_lead', leadId);
