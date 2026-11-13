@@ -115,14 +115,8 @@ const PIXEL_ID = "1984507065601523";
 const BOT_TOKEN = "8712814801:AAGxdtWzC9beYpRsy1N47MsfBW7Y9DbigXs";
 const CHAT_ID = "-5318102071";
 
-function loadPixel(){
-  if(!PIXEL_ID) return false;
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('set','autoConfig',false,PIXEL_ID);   
-  fbq('init',PIXEL_ID);
-  fbq('track','PageView');
-  return true;
-}
+// Pixel yuqorida yuklangan (PageView ham yuborilgan); takroran init qilmaymiz
+function loadPixel(){ return !!window.fbq; }
 
 document.querySelectorAll('[data-ig]').forEach(a=>a.href=INSTAGRAM_URL);
 

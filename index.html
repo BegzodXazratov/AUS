@@ -75,6 +75,11 @@ body{
 .brand h1{font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;line-height:1.1}
 .brand p{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.35}
 
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0 8px 16px}
+.chips li{font-size:12.5px;color:#fff;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07)}
+.lead{margin:0 8px 18px;font-size:14px;line-height:1.55;color:var(--muted)}
+.stepno{font-size:12px;color:var(--muted);margin-bottom:8px;letter-spacing:.02em}
+.note{font-size:12px;color:var(--muted);line-height:1.5;margin:-4px 0 4px}
 .dim{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:0 8px 24px}
 .dim div{position:relative;padding-top:14px;font-size:12px;color:var(--muted);transition:color .3s}
 .dim div::before{content:'';position:absolute;left:0;right:0;top:4px;height:2px;background:var(--line);transition:background .4s}
@@ -146,6 +151,9 @@ body{
     </div>
   </div>
 
+  <p class="lead">Arxitektura va dizayn yo'nalishida o'qimoqchi yoshlar uchun kurs. Ro'yxatdan o'ting — menejerimiz siz bilan bog'lanib, kurs haqida batafsil aytib beradi.</p>
+  <ul class="chips" id="chips"></ul>
+
   <div class="dim" id="dim" aria-hidden="true">
     <div class="on">Format</div><div>Yosh</div><div>Ma'lumotlar</div>
   </div>
@@ -160,11 +168,11 @@ body{
   </section>
 
   <section class="step" id="s2" aria-labelledby="q2">
-    <h2 class="q" id="q2">Kursimiz 14-20 yosh orasidagi bolalar uchun. Siz kim uchun izlayapsiz?</h2>
+    <h2 class="q" id="q2">Kursimiz 14-20 yosh orasidagi yoshlar uchun. Ro'yxatdan kim uchun o'tmoqchisiz?</h2>
     <div class="choices">
-      <label class="choice"><input type="radio" name="who" value="self"><span>O'zim uchun (yoshim 14-20 orasida)</span></label>
-      <label class="choice"><input type="radio" name="who" value="child"><span>Farzandim uchun</span></label>
-      <label class="choice"><input type="radio" name="who" value="adult"><span>O'zim uchun (20 yoshdan kattaman)</span></label>
+      <label class="choice"><input type="radio" name="who" value="self"><span>O'zim uchun (yoshim 14–20 orasida)</span></label>
+      <label class="choice"><input type="radio" name="who" value="child"><span>Farzandim uchun (yoshi 14–20 orasida)</span></label>
+      <label class="choice"><input type="radio" name="who" value="other"><span>Yosh 14–20 oralig'iga to'g'ri kelmaydi</span></label>
     </div>
     <div class="actions">
       <button class="btn btn-ghost" id="b2">Ortga</button>
@@ -185,6 +193,7 @@ body{
         <input id="phone" type="tel" inputmode="tel" autocomplete="tel" value="+998 " placeholder="+998 90 123 45 67">
         <div class="msg">Telefon raqamni to'liq kiriting</div>
       </div>
+      <p class="note">Raqamingiz faqat kurs haqida siz bilan bog'lanish uchun ishlatiladi.</p>
       <div class="actions">
         <button type="button" class="btn btn-ghost" id="b3">Ortga</button>
         <button type="submit" class="btn btn-main" id="send">RO'YXATDAN O'TISH</button>
@@ -209,16 +218,23 @@ const INSTAGRAM_URL = "https://www.instagram.com/aus_academy_/";
 const SUBMIT_URL = "https://geron-wheat.vercel.app/api/hook/9d7915e8408b4b95b790866b50de47c0";   // Geron CRM                      
 const PIXEL_ID = "1984507065601523";   
 
-function loadPixel(){
-  if(!PIXEL_ID) return false;
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('set','autoConfig',false,PIXEL_ID);   
-  fbq('init',PIXEL_ID);
-  fbq('track','PageView');
-  return true;
-}
+// Kurs ma'lumotlari: bo'sh qoldirilsa ko'rinmaydi. Qiymatlarni shu yerga yozing.
+const COURSE = {
+  duration: "",   // masalan: "6 oy"
+  schedule: "",   // masalan: "Haftada 3 kun"
+  price: ""       // masalan: "Oyiga 1 000 000 so'm"
+};
+const chips = [
+  ["Toshkent, offline", true],
+  ["14–20 yosh", true],
+  ["Guruhda 15 tagacha o'quvchi", true],
+  [COURSE.duration, !!COURSE.duration],
+  [COURSE.schedule, !!COURSE.schedule],
+  [COURSE.price, !!COURSE.price]
+].filter(c=>c[1]);
+document.getElementById('chips').innerHTML = chips.map(c=>'<li>'+c[0]+'</li>').join('');
 
-loadPixel();   
+// Pixel yuqorida allaqachon yuklangan (PageView ham yuborilgan) — takroran yuklamaymiz
 
 const $ = id => document.getElementById(id);
 document.querySelectorAll('[data-ig]').forEach(a => a.href = INSTAGRAM_URL);
@@ -237,7 +253,7 @@ document.querySelectorAll('input[name="offline"]').forEach(r=>r.addEventListener
 document.querySelectorAll('input[name="who"]').forEach(r=>r.addEventListener('change',()=>$('n2').disabled=false));
 
 $('n1').onclick=()=> val('offline')==='yes' ? show('s2') : show('stop-city');
-$('b2').onclick=()=> show('s1');$('n2').onclick=()=> val('who')==='adult' ? show('stop-age') : show('s3');
+$('b2').onclick=()=> show('s1');$('n2').onclick=()=> val('who')==='other' ? show('stop-age') : show('s3');
 $('b3').onclick=()=> show('s2');
 
 const phone=$('phone');
